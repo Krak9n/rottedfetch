@@ -4,6 +4,9 @@ use wmctrl::*;
 use sysinfo::{
     Components, Disks, Networks, System, RefreshKind, CpuRefreshKind,
 };
+use terminal_size::{
+  Width, Height, terminal_size
+};
 
 // stopped yesteday on the moment of figuring out how to display 
 // edges of a box on the right side
@@ -19,23 +22,18 @@ fn main() {
   let left_bot = String::from("\u{2517}");
   let right_bot = String::from("\u{251B}");
 
-  let height = sisi.os.iter().count();
-  let width = sisi.cpu.clone().chars().count();
+  let size = terminal_size();
+  let Some((Width(w), Height(h))) = size else { todo!() };
 
-  for y in 0..height {
+    // top
+    println!("\t{}{}{}", left, hor.repeat(w.into()), right);
 
-    println!("\t{}{}{}", left, hor.repeat(width+3), right);
+    // modules and os name
+    FETCH::make_logo(ver.clone(), sisi.os.clone(), w.into());
  
-    FETCH::make_logo(ver.clone(), sisi.os.clone());
-  
-    println!("\t{}{}{}", left_bot, hor.repeat(width+3), right_bot);
-  }
-  //colors_non_std("memory: ", &sisi.wm, "magenta"); 
-  //colors("", &sisi.os, "green");
-  colors("cpu: ", &Some(sisi.cpu), "magenta"); 
-  colors("memory: ", &Some(sisi.memory), "magenta"); 
-  colors("kernel: ", &Some(sisi.kernel), "magenta");
-
+    // bottom 
+    println!("\t{}{}{}", left_bot, hor.repeat(w.into()), right_bot);
+ 
 }
 
 /*
@@ -96,22 +94,35 @@ impl FETCH {
   // to draw a box count height by 
   // number of chars in os name
   // and width by c (char) + cpu 
-  fn r#box(count: usize, chara: &str) {
-    println!("{:<1$}", "", count);
-    // needed
-    // |- block
-    // -| block
-    //  - block
-    //  | block
-    //  |- block bottom
-    //  -| block bottom
-    }
+  fn just_modules() {
+    let sisi = Self::new();
+    //colors_non_std("memory: ", &sisi.wm, "magenta"); 
+    //for mut modules in 0..3 {
+      colors("cpu: ", &Some(sisi.cpu.clone()), "magenta"); 
+      //colors("memory: ", &Some(sisi.memory.clone()), "magenta"); 
+      //colors("kernel: ", &Some(sisi.kernel.clone()), "magenta");
+      //modules +=1;
+    //}
+  }
 
-  fn make_logo(ver: String, s: Option<String>) {
+  fn make_logo(ver: String, s: Option<String>, count: usize) {
     // colors("", &sys.os, "green");
-    for c in s.expect("reason").chars() {
+    let cp: String = s.expect("REASON").to_string();
+
+    for c in cp.chars() {
       print!("\t{}", ver);
-      println!(" {}", c);
+      print!(" {} ", c);
+      for k in 0..2 {
+        let b: u8 = cp.as_bytes()[k];
+        let d: char = b as char; 
+
+        if c == d {
+          break;
+        }
+        Self::just_modules();
+      }
+      print!("{: <1$}", "", count - 3);
+      println!("{}", ver);
     }
   }
 
