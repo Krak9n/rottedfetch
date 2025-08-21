@@ -4,17 +4,16 @@ use wmctrl::*;
 use sysinfo::{
     Components, Disks, Networks, System, RefreshKind, CpuRefreshKind,
 };
-use terminal_size::{
-  Width, Height, terminal_size
-};
 
-// stopped yesteday on the moment of figuring out how to display 
-// edges of a box on the right side
-// also dont forget to add names of modules in the box
+// to me tmrw
+// finish this shit as u planned the first time
+// make in the damn box
 fn main() {
 
   let sisi = FETCH::new();
 
+  // this sucks and i know that it does
+  // probably will change in the future
   let left = String::from("\u{250F}");
   let right = String::from("\u{2513}");
   let hor = String::from("\u{2501}");
@@ -22,40 +21,23 @@ fn main() {
   let left_bot = String::from("\u{2517}");
   let right_bot = String::from("\u{251B}");
 
-  let size = terminal_size();
-  let Some((Width(w), Height(h))) = size else { todo!() };
+  let height = sisi.os.iter().count();
+  let width = sisi.cpu.clone().chars().count();
 
-    // top
-    println!("\t{}{}{}", left, hor.repeat(w.into()), right);
+  // top
+  println!("\t{}{}{}", left, hor.repeat(width), right);
+  // modules and os name
+  FETCH::make_logo(ver.clone(), sisi.os.clone(), width);
+  // bottom 
+  println!("\t{}{}{}", left_bot, hor.repeat(width), right_bot);
 
-    // modules and os name
-    FETCH::make_logo(ver.clone(), sisi.os.clone(), w.into());
- 
-    // bottom 
-    println!("\t{}{}{}", left_bot, hor.repeat(w.into()), right_bot);
- 
 }
-
-/*
-// made specifically for memory
-// have to find another solution 
-pub fn colors_non_std(text: &str, field: &Output, color: &str) {
-  if let texts = field {
-    #[cfg(feature = "field-titles")]
-    print!("{} ", text.bright_white());
-    println!(
-      "{}",
-      format!("{}{}", text, texts).color(color)
-    );
-  }
-}
-*/
 
 pub fn colors(text: &str, field: &Option<String>, color: &str) {
   if let Some(texts) = field {
     #[cfg(feature = "field-titles")]
     print!("{} ", text.bright_white());
-    println!(
+    print!(
       "{}",
       format!("{}{}", text, texts).color(color)
     );
@@ -98,10 +80,10 @@ impl FETCH {
     let sisi = Self::new();
     //colors_non_std("memory: ", &sisi.wm, "magenta"); 
     //for mut modules in 0..3 {
-      colors("cpu: ", &Some(sisi.cpu.clone()), "magenta"); 
-      //colors("memory: ", &Some(sisi.memory.clone()), "magenta"); 
-      //colors("kernel: ", &Some(sisi.kernel.clone()), "magenta");
-      //modules +=1;
+    colors("cpu: ", &Some(sisi.cpu.clone()), "magenta"); 
+    //colors("memory: ", &Some(sisi.memory.clone()), "magenta"); 
+    //colors("kernel: ", &Some(sisi.kernel.clone()), "magenta");
+    //modules +=1;
     //}
   }
 
@@ -109,20 +91,18 @@ impl FETCH {
     // colors("", &sys.os, "green");
     let cp: String = s.expect("REASON").to_string();
 
+    let mut hasnt: bool = false;
     for c in cp.chars() {
       print!("\t{}", ver);
       print!(" {} ", c);
-      for k in 0..2 {
-        let b: u8 = cp.as_bytes()[k];
-        let d: char = b as char; 
 
-        if c == d {
-          break;
-        }
+      if hasnt == false {
         Self::just_modules();
-      }
-      print!("{: <1$}", "", count - 3);
+      }  
+      
+      print!("{: <1$}", "", count);
       println!("{}", ver);
+      hasnt = true;
     }
   }
 
