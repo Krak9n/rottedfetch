@@ -3,6 +3,9 @@
 
 This is a small fetch written in Rust. <br />
 
+**Requirements:** <br />
++ cargo
+
 **Shows:** <br />
 + username <br />
 + os <br />
