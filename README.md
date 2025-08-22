@@ -10,15 +10,14 @@ This is a small fetch written in Rust. <br />
 + memory <br />
 + kernel <br />
 
-### Installation
-**From source** <br />
+## Installation
+### From source <br />
 Just clone it with git and run:
 ```
 cargo install --path .
 ```
 
-
-**Arch Linux** <br />
+### Arch Linux <br />
 Users of superior may download it from AUR.
 ```
 yay -S rottedfetch
