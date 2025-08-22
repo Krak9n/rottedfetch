@@ -2,6 +2,7 @@
 ![](https://github.com/Krak9n/rottedfetch/blob/rewrite/img/ex.png)
 
 This is a small fetch written in Rust. <br />
+
 **Shows:** <br />
 + username <br />
 + os <br />
