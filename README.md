@@ -22,7 +22,7 @@ cargo install --path .
 ```
 
 ### Arch Linux <br />
-Users of superior may download it from AUR.
+Users of superior distro may download it from AUR.
 ```
 yay -S rottedfetch
 ```
