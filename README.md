@@ -1,30 +1,19 @@
-### My small Fetch program
-![](https://github.com/Krak9n/rottedfetch/blob/rewrite/img/ex.png)
+![](https://github.com/Krak9n/rottedfetch/blob/rewrite/images/showcase.png)
 
-This is a small fetch written in Rust. <br />
+Minimalistic system fetch. Configuration is done by editing the **Config.toml** file.  
+  
+### PREREQUISITES
+---
++ cargo  
++ rustc  
 
-**Requirements:** <br />
-+ cargo
-
-**Shows:** <br />
-+ username <br />
-+ os <br />
-+ cpu <br />
-+ gpu <br />
-+ memory <br />
-+ kernel <br />
-
-## Installation
-### From source <br />
-Just clone it with git and run:
-```
-cargo install --path .
-```
-
-### Arch Linux <br />
-Users of superior distro may download it from AUR.
-```
-yay -S rottedfetch
-```
-
-Happy Usage!
+### INSTALLATION
+---
+##### Arch Linux
+Users of Arch Linux may download the package from the AUR: [packages/rottedfetch](https://aur.archlinux.org/packages/rottedfetch)  
+---
+#### Compiling from source
+```bash
+$ cd rottedfetch  
+$ cargo install --path .  
+```  
