@@ -10,7 +10,7 @@ By default program reads the one defined locally, or the one under the **~/.conf
 
 ### INSTALLATION
 
-![versions](https://repology.org/project/rottedfetch/versions)  
+[![Packaging status](https://repology.org/badge/vertical-allrepos/rottedfetch.svg)](https://repology.org/project/rottedfetch/versions)  
 
 ---
 #### Arch Linux  
@@ -26,4 +26,5 @@ $ cd rottedfetch
 $ cargo install --path .  
 ```
 
+---
 Happy usage!~
