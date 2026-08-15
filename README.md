@@ -1,7 +1,6 @@
-![](images/showcase.png)
-
-Minimalistic system fetch. Configuration is done by editing the **Config.toml** file.  
-By default program reads the one defined locally, or the one under the **~/.config/rottedfetch/Config.toml**.    
+Minimalistic system fetch. Configuration is done by editing the **Config.toml** file.    
+  
+By default program reads the one defined locally, or the one under the **~/.config/rottedfetch/Config.toml**.     
   
 ### PREREQUISITES
 ---
