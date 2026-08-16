@@ -1,9 +1,11 @@
 [package]
 name = "rottedfetch"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
+authors = ["eto"]
+description = "Minimalistic system fetch."
+license = "MIT"
 
 [dependencies]
-colored = "3.0.0"
 sysinfo = "0.37.0"
 whoami = "1.6.1"

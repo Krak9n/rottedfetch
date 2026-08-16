@@ -1,6 +1,4 @@
-Minimalistic system fetch. Configuration is done by editing the **Config.toml** file.    
-  
-By default program reads the one defined locally, or the one under the **~/.config/rottedfetch/Config.toml**.     
+Minimalistic system fetch. Uses predefined modules for displaying.  
   
 ### PREREQUISITES
 ---
@@ -8,7 +6,7 @@ By default program reads the one defined locally, or the one under the **~/.conf
 + rustc  
 
 ### INSTALLATION
-
+---
 [![Packaging status](https://repology.org/badge/vertical-allrepos/rottedfetch.svg)](https://repology.org/project/rottedfetch/versions)  
 
 ---
