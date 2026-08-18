@@ -8,4 +8,5 @@ license = "MIT"
 
 [dependencies]
 sysinfo = "0.37.0"
-whoami = "1.6.1"
+gfxinfo = "0.1.2"
+whoami = "2.1.3"
